@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+
+
+<!--
+<div ng-app="" ng-init="crawfordRound1='', indongoRound1='', crawfordRound2='', indongoRound2=''">
+
+
+<p>Crawford: <input type="text" ng-model="crawfordRound1"></p><input type="text" ng-model="crawfordRound2"></p>
+<p>Indongo: <input type="text" ng-model="indongoRound1"></p><input type="text" ng-model="indongoRound2"></p>
+<p>Crawford Total: {{ crawford }}</p>
+<p>Indongo Total: {{ indongo }}</p>
+</div>
+-->
+
+<div ng-app="adder" ng-controller="addcontrol">
+    <table>
+    <tr>
+        <th>      </th><th>Round1</th><th>Round2</th><th>Round3</th>
+        <th>Round4</th><th>Round5</th><th>Round6</th><th>Round7</th>
+        <th>Round8</th><th>Round9</th><th>Round10</th><th>Round11</th>
+        <th>Round12</th>
+    </tr>
+    <tr ng-repeat="number in numbers">
+    	<td>Crawford : </td>
+        <td><input type="text" ng-change="update()" ng-model="number.cround1"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.cround2"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.cround3"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.cround4"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.cround5"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.cround6"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.cround7"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.cround8"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.cround9"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.cround10"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.cround11"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.cround12"></td>
+        <td>Total : {{c_sum}}</td>
+    </tr>
+    <tr ng-repeat="number in numbers">
+    	<td>Indongo : </td>
+        <td><input type="text" ng-change="update()" ng-model="number.iround1"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.iround2"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.iround3"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.iround4"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.iround5"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.iround6"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.iround7"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.iround8"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.iround9"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.iround10"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.iround11"></td>
+        <td><input type="text" ng-change="update()" ng-model="number.iround12"></td>
+        <td>Total : {{i_sum}}</td>
+    </tr>
+    </table>
+    
+</div>
+
+
+
+
+
+</body>
+<script>
+var myapp = angular.module('adder', []);
+myapp.controller('addcontrol', function($scope) {
+  $scope.numbers = [{
+      cround1: 0,
+      cround2: 0,
+      cround3: 0,
+      cround4: 0,
+      cround5: 0,
+      cround6: 0,
+      cround7: 0,
+      cround8: 0,
+      cround9: 0,
+      cround10: 0,
+      cround11: 0,
+      cround12: 0,
+      iround1: 0,
+      iround2: 0,
+      iround3: 0,
+      iround4: 0,
+      iround5: 0,
+      iround6: 0,
+      iround7: 0,
+      iround8: 0,
+      iround9: 0,
+      iround10: 0,
+      iround11: 0,
+      iround12: 0,
+    }
+
+  ];
+  /*
+  $scope.add = function() {
+    $scope.numbers.push({
+      val: 0,
+      qty: 0
+    });
+  };
+	*/
+  $scope.update = function() {
+    var result = 0;
+    angular.forEach($scope.numbers, function(num) {
+      c_result = (parseInt(num.cround1) + parseInt(num.cround2)
+      			 + parseInt(num.cround3) + parseInt(num.cround4)
+      			 + parseInt(num.cround5) + parseInt(num.cround6)
+      			 + parseInt(num.cround7) + parseInt(num.cround8)
+      			 + parseInt(num.cround9) + parseInt(num.cround10)
+      			 + parseInt(num.cround11) + parseInt(num.cround12));
+      i_result = (parseInt(num.iround1) + parseInt(num.iround2)
+      			 + parseInt(num.iround3)) + parseInt((num.iround4))
+      			 + parseInt((num.iround5)) + parseInt((num.iround6))
+      			 + parseInt((num.iround7)) + parseInt((num.iround8))
+      			 + parseInt((num.iround9)) + parseInt((num.iround10))
+      			 + parseInt((num.iround11)) + parseInt((num.iround12));
+    });
+    $scope.c_sum = c_result;
+    $scope.i_sum = i_result;
+  };
+});
+</script>
+</html>
